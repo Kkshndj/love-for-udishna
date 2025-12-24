@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Udishna ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+.card {
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+button {
+  background: #ff2d55;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 85%;
+}
+button:hover { background: #ff0f3f; }
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.heart {
+  font-size: 34px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+<!-- LOVE PAGE -->
+<div class="card" id="lovePage">
+  <div class="heart">❤️</div>
+  <h2>Udishna (Nixasor)</h2>
+  <p id="reason">Tap below 💕</p>
+  <button onclick="showReason()">Why I Love You</button>
+  <button onclick="startQuiz()">Love Quiz 💘</button>
+</div>
+<!-- QUIZ -->
+<div class="card" id="quizPage" style="display:none;">
+  <h3 id="question"></h3>
+  <button onclick="next()">Yes</button>
+  <button onclick="next()">Of Course</button>
+</div>
+<!-- SLIDESHOW -->
+<div class="card" id="photoPage" style="display:none;">
+  <h3>My Favorite Memories 📸</h3>
+  <img id="slide" src="img1.jpg">
+  <button onclick="nextSlide()">Next ❤️</button>
+</div>
+<!-- PROPOSAL -->
+<div class="card" id="proposalPage" style="display:none;">
+  <div class="heart">💍</div>
+  <h2>Udishna (Nixasor)</h2>
+  <p>Will you be mine forever?</p>
+  <button onclick="yes()">YES ❤️</button>
+</div>
+<script>
+const reasons = [
+ "Your smile makes my world brighter ✨",
+ "You are my peace ❤️",
+ "Life feels beautiful with you 💕",
+ "You are my forever Nixasor 💍"
+];
+let r = 0;
+function showReason() {
+ document.getElementById("reason").innerText = reasons[r];
+ r = (r + 1) % reasons.length;
+}
+const quiz = [
+ "Do you know how special you are?",
+ "Are you my favorite person?",
+ "Do you believe in us?",
+ "Ready for something special?"
+];
+let q = 0;
+function startQuiz() {
+ lovePage.style.display = "none";
+ quizPage.style.display = "block";
+ question.innerText = quiz[q];
+}
+function next() {
+ q++;
+ if (q < quiz.length) {
+   question.innerText = quiz[q];
+ } else {
+   quizPage.style.display = "none";
+   photoPage.style.display = "block";
+ }
+}
+const photos = ["img1.jpg","img2.jpg","img3.jpg","img4.jpg"];
+let s = 0;
+function nextSlide() {
+ s++;
+ if (s < photos.length) {
+   document.getElementById("slide").src = photos[s];
+ } else {
+   photoPage.style.display = "none";
+   proposalPage.style.display = "block";
+ }
+}
+function yes() {
+ proposalPage.innerHTML = `
+  <h2>She said YES ❤️</h2>
+  <p>You are my forever, Udishna 💕</p>
+  <div class="heart">❤️</div>
+ `;
+}
+</script>
+</body>
+</html>
